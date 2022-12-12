@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<%- include('partials/head.ejs')%>
+
+    <body>
+        <%- include('partials/header.ejs')%>
+
+
+            <section class="container-posts">
+                <%- include('partials/navbar.ejs')%>
+
+                    <h1>Posts</h1>
+                    <article class="content">
+                        <p>Sinta-se a vontade para deixar um comentário.</p>
+                        <div class="posts">
+                            <% posts.forEach((item)=>{ %>
+                                <div class="post">
+                                    <h3><%= item.title%></h3>
+                                    <p><%= item.text%></p>
+                                </div>
+                            <% }) %>
+                        </div>
+
+                    </article>
+
+                    <div class="content-form">
+                        <form action="/save-post" method="post">
+                            <div>
+                                <label>Título</label>
+                                <input name ="titulo" type="text" placeholder="Digite um Título" required>
+                            </div>
+                            <div>
+                                <label>Comentário</label>
+                                <textarea name="comentario" required></textarea>
+                            </div>
+                            <input class="btn-coments" type="submit" value="Enviar">
+                        </form>
+                    </div>
+
+                    <%- include('partials/footer.ejs')%>
+            </section>
+            <%- include('partials/foot.ejs')%>
+    </body>
+
+</html>
